@@ -14,7 +14,7 @@ use PDO, Exception;
             $this->conexao = Banco::conecta();
         }
 
-        public function lerFabricantes( ):array {
+        public function lerFabricantes():array {
             $sql = "SELECT * FROM fabricantes ORDER BY nome";
             
             try {
@@ -27,9 +27,6 @@ use PDO, Exception;
         
             return $resultado;
         } 
-
-
-
 
         public function getId(): int {
                 return $this->id;
