@@ -1,0 +1,9 @@
+{
+    "name" : "kaue/exemplo-crud-php-poo",
+    "description" : "Versão do exemplo orientado á objetos",
+    "autoload" : {
+        "psr-4" : {
+            "exemploCrudPoo\\" : "src/" 
+        }
+    }
+}
