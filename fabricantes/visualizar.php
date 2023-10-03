@@ -4,11 +4,10 @@ require_once "../vendor/autoload.php";
 
 $fabricante = new Fabricante;
 
-// $listaDeFabricantes = lerFabricantes($conexao);
-// $quantidade = count($listaDeFabricantes);
-?>
-<pre><?=var_dump($fabricante)?></pre>
+$listaDeFabricantes = $fabricante->lerFabricantes();
+$quantidade = count($listaDeFabricantes);
 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
