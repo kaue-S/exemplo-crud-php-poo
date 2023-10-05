@@ -79,6 +79,7 @@ use PDO, Exception;
             return $resultado;
         } 
 
+
         //função para atualizar um fabricante
         function atualizarFabricante():void {
             $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id";
@@ -93,6 +94,7 @@ use PDO, Exception;
             }
         } 
 
+        
         //Função para excluir um fabricante
         function excluirFabricante():void {
             $sql = "DELETE FROM fabricantes WHERE id = :id";
