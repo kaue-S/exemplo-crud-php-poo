@@ -43,7 +43,7 @@ use PDO, Exception;
         }
 
         public function setNome(string $nome): self {
-                $this->nome = $nome;
+                $this->nome = filter_var($nome, FILTER_SANITIZE_SPECIAL_CHARS);
 
                 return $this;
         }
@@ -59,7 +59,7 @@ use PDO, Exception;
         } catch (Exception $erro) {
             die("Erro ao inserir: " . $erro->getMessage());
         }
-        
+
         }
 
 
