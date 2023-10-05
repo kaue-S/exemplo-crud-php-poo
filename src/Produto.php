@@ -113,5 +113,66 @@
 
                 return $this;
         }
+
+
+        //método para inserir um novo produto
+        function inserirProduto():void {
+            $sql = "INSERT INTO produtos(
+                nome, preco, quantidade, descricao, fabricante_id
+            ) VALUES(
+                :nome, :preco, :quantidade, :descricao, :fabricanteId
+            )";    
+        
+        
+            try {
+                $consulta = $this->conexao->prepare($sql);
+                $consulta->bindValue(":nome", $this->nome, PDO::PARAM_STR);
+                $consulta->bindValue(":preco", $this->preco, PDO::PARAM_STR);
+                $consulta->bindValue(":quantidade", $this->quantidade, PDO::PARAM_INT);
+                $consulta->bindValue(":descricao", $this->descricao, PDO::PARAM_STR);
+                $consulta->bindValue(":fabricanteId", $this->fabricanteId, PDO::PARAM_INT);
+                $consulta->execute();
+            } catch (Exception $erro) {
+                die("Erro ao inserir: ".$erro->getMessage());
+            }
+        }
+
+        //Método para ler um unico produto
+        function lerUmProduto():array {
+            $sql = "SELECT * FROM produtos WHERE id = :id";
+            try {
+                $consulta = $this->conexao->prepare($sql);
+                $consulta->bindValue(":id", $this->id, PDO::PARAM_INT);
+                $consulta->execute();
+                $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+            } catch (Exception $erro) {
+                die("Erro ao carregar dados: ".$erro->getMessage());
+            }    
+            return $resultado;
+        }
+
+        
+        //Método para atualizar um produto
+        function atualizarProduto():void {
+
+            $sql = "UPDATE produtos SET
+                nome = :nome,
+                preco = :preco,
+                quantidade = :quantidade,
+                descricao = :descricao,
+                fabricante_id = :fabricanteId WHERE id = :id";
+            try {
+                $consulta = $this->conexao->prepare($sql);
+                $consulta->bindValue(":nome", $this->nome, PDO::PARAM_STR);
+                $consulta->bindValue(":preco", $this->preco, PDO::PARAM_STR);
+                $consulta->bindValue(":quantidade", $this->quantidade, PDO::PARAM_INT);
+                $consulta->bindValue(":descricao", $this->descricao, PDO::PARAM_STR);
+                $consulta->bindValue(":fabricanteId", $this->fabricanteId, PDO::PARAM_INT);
+                $consulta->bindValue(":id", $this->id, PDO::PARAM_INT);
+                $consulta->execute();
+            } catch (Exception $erro) {
+                die("Erro ao atualizar: ".$erro->getMessage());
+            }   
+        }
     }
 ?>
