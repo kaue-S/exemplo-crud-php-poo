@@ -14,6 +14,7 @@ use PDO, Exception;
             $this->conexao = Banco::conecta();
         }
 
+        //método para ler um fabricante
         public function lerFabricantes():array {
             $sql = "SELECT * FROM fabricantes ORDER BY nome";
             
@@ -46,5 +47,22 @@ use PDO, Exception;
 
                 return $this;
         }
+
+        //função para inserir fabricante
+        public function inserirFabricante(): void {
+        $sql = "INSERT INTO fabricantes(nome) VALUES(:nome)";
+
+        try {
+            $consulta = $this->conexao->prepare($sql);
+            $consulta->bindValue(":nome", $this->nome, PDO::PARAM_STR);
+            $consulta->execute();
+        } catch (Exception $erro) {
+            die("Erro ao inserir: " . $erro->getMessage());
+        }
+        
+        }
+
+
+
     }
 ?>

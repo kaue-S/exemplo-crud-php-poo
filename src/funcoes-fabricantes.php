@@ -16,20 +16,6 @@ function lerFabricantes( PDO $conexao ):array {
 } 
 
 
-function inserirFabricante(PDO $conexao, string $nomeDoFabricante):void {
-    $sql = "INSERT INTO fabricantes(nome) VALUES(:nome)";
-
-    try {
-        $consulta = $conexao->prepare($sql);
-        $consulta->bindValue(":nome", $nomeDoFabricante, PDO::PARAM_STR);
-        $consulta->execute();
-    } catch (Exception $erro) {
-        die("Erro ao inserir: ".$erro->getMessage());
-    }
-
-}
-
-
 function lerUmFabricante(PDO $conexao, int $idFabricante):array {
     $sql = "SELECT * FROM fabricantes WHERE id = :id";
 
