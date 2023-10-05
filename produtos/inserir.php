@@ -11,7 +11,7 @@ if(isset($_POST['inserir'])){
     $produto->setNome($_POST['nome']);
     $produto->setPreco($_POST['preco']);
     $produto->setQuantidade($_POST['quantidade']);
-    $produto->setFabricanteId($_POST['id']);
+    $produto->setFabricanteId($_POST['fabricante']);
     $produto->setDescricao($_POST['descricao']);
     $produto->inserirProduto();
 
