@@ -45,7 +45,7 @@
         }
 
         public function setId(int $id): self {
-                $this->id = $id;
+                $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
                 return $this;
         }
@@ -57,7 +57,7 @@
         }
 
         public function setNome(string $nome): self {
-                $this->nome = $nome;
+                $this->nome = filter_var($nome, FILTER_SANITIZE_SPECIAL_CHARS);
 
                 return $this;
         }
@@ -69,7 +69,7 @@
         }
 
         public function setDescricao(string $descricao): self {
-                $this->descricao = $descricao;
+                $this->descricao =  filter_var($descricao, FILTER_SANITIZE_SPECIAL_CHARS);
 
                 return $this;
         }
@@ -83,7 +83,7 @@
         }
 
         public function setPreco(float $preco): self {
-                $this->preco = $preco;
+                $this->preco = filter_var($preco, FILTER_SANITIZE_NUMBER_FLOAT);
 
                 return $this;
         }
@@ -97,7 +97,7 @@
 
         public function setQuantidade(int $quantidade): self
         {
-                $this->quantidade = $quantidade;
+                $this->quantidade = filter_var($quantidade, FILTER_SANITIZE_NUMBER_INT);
 
                 return $this;
         }
@@ -109,7 +109,7 @@
         }
 
         public function setFabricanteId(int $fabricanteId): self {
-                $this->fabricanteId = $fabricanteId;
+                $this->fabricanteId = filter_var($fabricanteId, FILTER_SANITIZE_NUMBER_INT);
 
                 return $this;
         }
