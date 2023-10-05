@@ -16,22 +16,6 @@ function lerFabricantes( PDO $conexao ):array {
 } 
 
 
-function lerUmFabricante(PDO $conexao, int $idFabricante):array {
-    $sql = "SELECT * FROM fabricantes WHERE id = :id";
-
-    try {
-        $consulta = $conexao->prepare($sql);
-        $consulta->bindValue(":id", $idFabricante, PDO::PARAM_INT);
-        $consulta->execute();
-        $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
-    } catch (Exception $erro) {
-        die("Erro ao carregar: ".$erro->getMessage());
-    }
-
-    return $resultado;
-} 
-
-
 function atualizarFabricante(PDO $conexao, string $nome, int $id):void {
     $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id";
     
