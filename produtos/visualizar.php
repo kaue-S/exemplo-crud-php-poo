@@ -2,11 +2,11 @@
 use ExemploCrudPoo\Produto;
 use ExemploCrudPoo\Utilitarios;
 require_once "../vendor/autoload.php";
-// require_once "../src/funcoes-utilitarias.php";
 
-$produto = new Produto;
-$listaDeProdutos = $produto->lerProdutos();
+$objetoProduto = new Produto;
+$listaDeProdutos = $objetoProduto->lerProdutos();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +17,9 @@ $listaDeProdutos = $produto->lerProdutos();
 </head>
 <body>
     <div class="container">
-        <h1>Produtos | SELECT - <a href="../index.php">Home</a> </h1>
+        <h1 class="text-center">Produtos | SELECT - <a class="text-decoration-none btn btn-info" href="../index.php">Home</a> </h1>
         <hr>
-        <h2>Lendo e carregando todos os produtos.</h2>
+        <h2 class="text-center">Lendo e carregando todos os produtos.</h2>
         <p class="btn btn-success "><a class="text-decoration-none text-white" href="inserir.php">
             Inserir novo produto</a></p>
         <div class="row">
@@ -34,7 +34,7 @@ $listaDeProdutos = $produto->lerProdutos();
                     <?=$totalFormatado = Utilitarios::calcularTotal($produto["preco"], $produto["quantidade"])?></p>
                     <hr>
                     <p>
-                        <a class="btn btn-warning" href="atualizar.php?id=<?=$produto["id"]?>">Editar</a> |
+                        <a class="btn btn-primary" href="atualizar.php?id=<?=$produto["id"]?>">Editar</a> |
                         <a class="btn btn-danger" class="excluir" href="excluir.php?id=<?=$produto["id"]?>">Excluir</a>
                     </p>
                 </article>

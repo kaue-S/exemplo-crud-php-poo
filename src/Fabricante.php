@@ -48,7 +48,7 @@ use PDO, Exception;
                 return $this;
         }
 
-        //função para inserir fabricante
+        //Método para inserir fabricante
         public function inserirFabricante(): void {
         $sql = "INSERT INTO fabricantes(nome) VALUES(:nome)";
 
@@ -63,7 +63,7 @@ use PDO, Exception;
         }
 
 
-        //função para ler apenas um fabricante
+        //Método para ler apenas um fabricante
         public function lerUmFabricante():array {
             $sql = "SELECT * FROM fabricantes WHERE id = :id";
         

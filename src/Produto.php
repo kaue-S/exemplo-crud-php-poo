@@ -17,7 +17,7 @@
             $this->conexao = Banco::conecta();
         }
 
-        function lerProdutos():array {
+        public function lerProdutos():array {
             $sql = "SELECT 
                         produtos.id,
                         produtos.nome AS produto,
@@ -116,7 +116,7 @@
 
 
         //método para inserir um novo produto
-        function inserirProduto():void {
+        public function inserirProduto():void {
             $sql = "INSERT INTO produtos(
                 nome, preco, quantidade, descricao, fabricante_id
             ) VALUES(
@@ -138,7 +138,7 @@
         }
 
         //Método para ler um unico produto
-        function lerUmProduto():array {
+        public function lerUmProduto():array {
             $sql = "SELECT * FROM produtos WHERE id = :id";
             try {
                 $consulta = $this->conexao->prepare($sql);
@@ -153,7 +153,7 @@
 
         
         //Método para atualizar um produto
-        function atualizarProduto():void {
+        public function atualizarProduto():void {
 
             $sql = "UPDATE produtos SET
                 nome = :nome,
@@ -176,7 +176,7 @@
         }
 
         //Método para excluir um produto
-        function excluirProduto():void {
+        public function excluirProduto():void {
             $sql = "DELETE FROM produtos WHERE id = :id";
             try {
                 $consulta = $this->conexao->prepare($sql);

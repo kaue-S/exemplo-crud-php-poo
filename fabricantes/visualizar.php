@@ -1,7 +1,6 @@
 <?php
 use ExemploCrudPoo\Fabricante;
 require_once "../vendor/autoload.php";
-// require_once "../vendor/autoload.php";
 
 $fabricante = new Fabricante;
 
@@ -29,7 +28,7 @@ $quantidade = count($listaDeFabricantes);
         <?php if(isset($_GET["status"]) && $_GET["status"] === "sucesso"){ ?>
             <h2 style="color:blue">Fabricante atualizado com sucesso!</h2>
         <?php } ?>
-        <table>
+        <table class="border">
             <caption>Lista de Fabricantes: <b><?=$quantidade?></b></caption>
             <thead>
                 <tr>
@@ -41,11 +40,11 @@ $quantidade = count($listaDeFabricantes);
             <tbody>
         <?php foreach($listaDeFabricantes as $fabricante) { ?>
                 <tr>
-                    <td> <?=$fabricante["id"]?>  </td>
-                    <td> <?=$fabricante["nome"]?> </td>
-                    <td>
-                        <a href="atualizar.php?id=<?=$fabricante["id"]?>">Editar</a>
-                        <a class="excluir" href="excluir.php?id=<?=$fabricante["id"]?>">Excluir</a>
+                    <td class="p-2"> <?=$fabricante["id"]?>  </td>
+                    <td class="p-2"> <?=$fabricante["nome"]?> </td>
+                    <td class="p-2">
+                        <a class="btn btn-primary" href="atualizar.php?id=<?=$fabricante["id"]?>">Editar</a>
+                        <a class="btn btn-warning" class="excluir" href="excluir.php?id=<?=$fabricante["id"]?>">Excluir</a>
                     </td>
                 </tr>
         <?php } ?>

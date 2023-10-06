@@ -71,10 +71,10 @@ if(isset($_POST['atualizar'])){
                 <label for="descricao">Descrição:</label> <br>
                 <textarea name="descricao" id="descricao" cols="30" rows="3"><?=$dadosProduto['descricao']?></textarea>
             </p>
-            <button type="submit" name="atualizar">Atualizar produto</button>
+            <button class="btn btn-success" type="submit" name="atualizar">Atualizar produto</button>
         </form>
         <hr>
-        <p><a href="visualizar.php">Voltar</a></p>
+        <p><a class="btn btn-warning" href="visualizar.php">Voltar</a></p>
     </div>
     
 </body>

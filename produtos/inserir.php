@@ -2,6 +2,8 @@
 use ExemploCrudPoo\Produto;
 use ExemploCrudPoo\Fabricante;
 require_once "../vendor/autoload.php";
+
+
 $fabricante = new Fabricante;
 $listaFabricante = $fabricante->lerFabricantes();
 
