@@ -3,7 +3,7 @@
     "description" : "Versão do exemplo orientado á objetos",
     "autoload" : {
         "psr-4" : {
-            "exemploCrudPoo\\" : "src/" 
+            "ExemploCrudPoo\\" : "src/" 
         }
     }
 }
