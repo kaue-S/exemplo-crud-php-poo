@@ -1,31 +1,21 @@
 <?php
-require_once "../src/funcoes-fabricantes.php";
-require_once "../src/funcoes-produtos.php";
+use ExemploCrudPoo\Produto;
+use ExemploCrudPoo\Fabricante;
+require_once "../vendor/autoload.php";
 
-$listaDeFabricantes = lerFabricantes($conexao);
 
+$fabricante = new Fabricante;
+$listaFabricante = $fabricante->lerFabricantes();
+
+$produto = new Produto;
 if(isset($_POST['inserir'])){
-    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
     
-    $preco = filter_input(
-        INPUT_POST, "preco", 
-        FILTER_SANITIZE_NUMBER_FLOAT,
-        FILTER_FLAG_ALLOW_FRACTION
-    );
-
-    $quantidade = filter_input(
-        INPUT_POST, "quantidade", FILTER_SANITIZE_NUMBER_INT
-    );
-
-    $fabricanteId = filter_input(
-        INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT
-    );
-
-    $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_SPECIAL_CHARS);
-
-    inserirProduto(
-        $conexao, $nome, $preco, $quantidade, $fabricanteId, $descricao
-    );
+    $produto->setNome($_POST['nome']);
+    $produto->setPreco($_POST['preco']);
+    $produto->setQuantidade($_POST['quantidade']);
+    $produto->setFabricanteId($_POST['fabricante']);
+    $produto->setDescricao($_POST['descricao']);
+    $produto->inserirProduto();
 
     header("location:visualizar.php");
 }
@@ -62,9 +52,9 @@ if(isset($_POST['inserir'])){
                 <select name="fabricante" id="fabricante" required>
                     <option value=""></option>
         
-                    <?php foreach($listaDeFabricantes as $fabricante) { ?>
-                    <option value="<?=$fabricante['id']?>">
-                        <?=$fabricante['nome']?>
+                    <?php foreach($listaFabricante as $umFabricante) { ?>
+                    <option value="<?=$umFabricante['id']?>">
+                        <?=$umFabricante['nome']?>
                     </option>
                     <?php } ?>
                 </select>
